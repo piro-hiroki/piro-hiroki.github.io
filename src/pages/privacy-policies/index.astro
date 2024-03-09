@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import Policies from "@layouts/Policies.astro";
+import getSortedPosts from "@utils/getSortedPosts";
+import getPagination from "@utils/getPagination";
+
+const posts = await getCollection("privacy-policies");
+
+const sortedPosts = getSortedPosts(posts);
+
+const pagination = getPagination({
+  posts: sortedPosts,
+  page: 1,
+  isIndex: true,
+});
+---
+
+<Policies {...pagination} />
