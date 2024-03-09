@@ -17,9 +17,12 @@ export interface Props {
 const { currentPage, totalPages, paginatedPosts } = Astro.props;
 ---
 
-<Layout title={`Posts | ${SITE.title}`}>
+<Layout title={`Privacy Policies | ${SITE.title}`}>
   <Header activeNav="privacy-policies" />
-  <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
+  <Main
+    pageTitle="Privacy Policies"
+    pageDesc="This is a page summarizing the privacy policy of the app I created."
+  >
     <ul>
       {
         paginatedPosts.map(({ data, slug }) => (
@@ -32,8 +35,8 @@ const { currentPage, totalPages, paginatedPosts } = Astro.props;
   <Pagination
     {currentPage}
     {totalPages}
-    prevUrl={`/posts${currentPage - 1 !== 1 ? "/" + (currentPage - 1) : ""}/`}
-    nextUrl={`/posts/${currentPage + 1}/`}
+    prevUrl={`/privacy-policies${currentPage - 1 !== 1 ? "/" + (currentPage - 1) : ""}/`}
+    nextUrl={`/privacy-policies/${currentPage + 1}/`}
   />
 
   <Footer noMarginTop={totalPages > 1} />
