@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import Posts from "@layouts/Policies.astro";
-import PostDetails from "@layouts/PostDetails.astro";
+import Policies from "@layouts/Policies.astro";
+import Policy from "@layouts/PolicyDetails.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import getPageNumbers from "@utils/getPageNumbers";
 import getPagination from "@utils/getPagination";
@@ -11,10 +11,7 @@ export interface Props {
 }
 
 export async function getStaticPaths() {
-  const posts = await getCollection(
-    "privacy-policies",
-    ({ data }) => !data.draft
-  );
+  const posts = await getCollection("policies", ({ data }) => !data.draft);
 
   const postResult = posts.map(post => ({
     params: { slug: post.slug },
@@ -31,7 +28,7 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const { post } = Astro.props;
 
-const posts = await getCollection("privacy-policies");
+const posts = await getCollection("policies");
 
 const sortedPosts = getSortedPosts(posts);
 
@@ -41,4 +38,4 @@ const pagination = getPagination({
 });
 ---
 
-{post ? <PostDetails post={post} /> : <Posts {...pagination} />}
+{post ? <Policy post={post} /> : <Policies {...pagination} />}

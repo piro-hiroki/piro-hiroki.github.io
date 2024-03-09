@@ -4,7 +4,7 @@ import Policies from "@layouts/Policies.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import getPagination from "@utils/getPagination";
 
-const posts = await getCollection("privacy-policies");
+const posts = await getCollection("policies");
 
 const sortedPosts = getSortedPosts(posts);
 
