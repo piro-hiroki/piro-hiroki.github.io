@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 
 const rads = `
-google.com, pub-3050915388015871, DIRECT, f08c47fec0942fa0
+google.com, pub-4275966535660204, DIRECT, f08c47fec0942fa0
 `.trim();
 
 export const GET: APIRoute = () =>
